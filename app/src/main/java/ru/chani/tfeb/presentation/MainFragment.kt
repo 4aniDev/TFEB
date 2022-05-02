@@ -71,7 +71,7 @@ class MainFragment : Fragment() {
 
     private fun setOnClickListeners() {
         binding.buttonCheck.setOnClickListener { viewModel.sendSms(requireActivity()) }
-        binding.fabCardInfo.setOnClickListener { goToCardItemFragment() }
+        binding.cvBalance.setOnClickListener { goToCardItemFragment() }
     }
 
 

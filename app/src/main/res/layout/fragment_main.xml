@@ -31,17 +31,15 @@
                 tools:text="Hi Dan!" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_card_info"
+                android:id="@+id/fab_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_person_24"
+                android:src="@drawable/ic_baseline_settings_24"
                 android:layout_margin="5dp"
-                app:backgroundTint="@color/fab_background"
+                app:backgroundTint="@color/settings_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-
 
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -54,7 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_margin="5dp"
-            app:cardBackgroundColor="@color/card_background"
             app:cardCornerRadius="15dp"
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
