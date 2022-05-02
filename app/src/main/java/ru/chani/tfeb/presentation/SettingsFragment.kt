@@ -26,6 +26,7 @@ class SettingsFragment : Fragment() {
     companion object {
 
         fun newInstanceSettingsFragment() = SettingsFragment()
+
     }
 
 }

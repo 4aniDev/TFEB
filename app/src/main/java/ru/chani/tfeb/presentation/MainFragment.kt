@@ -68,6 +68,15 @@ class MainFragment : Fragment() {
             .commit()
     }
 
+    private fun goToSettingsFragment() {
+        parentFragmentManager.beginTransaction()
+            .replace(
+                R.id.main_container,
+                SettingsFragment.newInstanceSettingsFragment()
+            )
+            .commit()
+    }
+
 
     private fun setOnClickListeners() {
         binding.buttonCheck.setOnClickListener { viewModel.sendSms(requireActivity()) }
