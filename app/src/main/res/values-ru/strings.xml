@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TFEB</string>
+    <string name="person_first_name">Имя</string>
+    <string name="person_second_name">Фамилия</string>
+    <string name="balance">БАЛАНС</string>
+    <string name="check">Проверить</string>
+    <string name="save">сохранить</string>
+    <string name="card_number_hint">Номер карты</string>
+    <string name="card_person_name_hint">Имя</string>
+    <string name="card_person_surname_hint">Фамилия</string>
+    <string name="error_input_card_number">Неверный номер карты</string>
+    <string name="error_input_card_person_name">Неверное имя</string>
+    <string name="error_input_card_person_surname">Неверная фамилия</string>
+    <string name="your_balance_here">Ваш баланс:</string>
+    <string name="hello">Привет</string>
+    <string name="card_information">Информация о карте:</string>
+    <string name="choose_language">Выбрать язык:</string>
+    <string name="settings">Настройки</string>
+</resources>

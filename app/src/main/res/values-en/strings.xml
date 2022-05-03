@@ -1,11 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TFEB</string>
     <string name="person_first_name">Name</string>
     <string name="person_second_name">Second Name</string>
     <string name="balance">BALANCE</string>
     <string name="check">Check</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
     <string name="save">Save</string>
     <string name="card_number_hint">Card number</string>
     <string name="card_person_name_hint">First name</string>
@@ -18,6 +17,4 @@
     <string name="card_information">Card information:</string>
     <string name="choose_language">Choose language:</string>
     <string name="settings">Settings</string>
-
-
 </resources>
