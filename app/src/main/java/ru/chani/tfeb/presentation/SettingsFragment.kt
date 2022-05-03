@@ -24,6 +24,7 @@ class SettingsFragment : Fragment() {
 
 
     companion object {
+        const val SETTINGS_FRAGMENT_NAME = "SETTINGS_FRAGMENT_NAME"
 
         fun newInstanceSettingsFragment() = SettingsFragment()
 

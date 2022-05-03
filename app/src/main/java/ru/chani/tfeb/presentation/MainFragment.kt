@@ -70,6 +70,7 @@ class MainFragment : Fragment() {
 
     private fun goToSettingsFragment() {
         parentFragmentManager.beginTransaction()
+            .addToBackStack(SettingsFragment.SETTINGS_FRAGMENT_NAME)
             .replace(
                 R.id.main_container,
                 SettingsFragment.newInstanceSettingsFragment()
@@ -79,8 +80,9 @@ class MainFragment : Fragment() {
 
 
     private fun setOnClickListeners() {
-        binding.buttonCheck.setOnClickListener { viewModel.sendSms(requireActivity()) }
+        binding.fabSettings.setOnClickListener { goToSettingsFragment() }
         binding.cvBalance.setOnClickListener { goToCardItemFragment() }
+        binding.buttonCheck.setOnClickListener { viewModel.sendSms(requireActivity()) }
     }
 
 
