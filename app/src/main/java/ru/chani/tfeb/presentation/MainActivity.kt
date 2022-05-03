@@ -11,7 +11,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import ru.chani.tfeb.R
 
-class MainActivity : AppCompatActivity(), CardItemFragment.OnEditingAndOnAddFinishedListener {
+class MainActivity :
+    AppCompatActivity(),
+    CardItemFragment.OnEditingAndOnAddFinishedListener,
+    SettingsFragment.OnEditingFinishedListener {
 
 
     private lateinit var sharedPreference: SharedPreferences
@@ -69,10 +72,15 @@ class MainActivity : AppCompatActivity(), CardItemFragment.OnEditingAndOnAddFini
         onBackPressed()
     }
 
+    override fun onSettingsEditingFinished() {
+        onBackPressed()
+    }
+
     override fun onAddFinished() {
         launchMainFragment()
         putRecordThatCardIsNotDefault()
     }
+
 
     private fun initSharedPreference() {
         sharedPreference = getSharedPreferences(SHARED_PREFERENCE_NAME_RUN_APP_COUNT, MODE_PRIVATE)
@@ -143,7 +151,6 @@ class MainActivity : AppCompatActivity(), CardItemFragment.OnEditingAndOnAddFini
         private const val SHARED_PREFERENCE_KEY_IS_DEFAULT_CARD = "KEY for CARD_INFO"
         private const val SHARED_PREFERENCE_VALUE_CARD_IS_NOT_DEFAULT = false
         private const val SHARED_PREFERENCE_VALUE_CARD_IS_DEFAULT = true
-
 
 
         private const val MY_PERMISSIONS_REQUEST_SEND_SMS = 0
