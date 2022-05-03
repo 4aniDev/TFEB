@@ -14,7 +14,7 @@
     <string name="error_input_card_person_surname">Invalid Surname</string>
     <string name="your_balance_here">Your balance here:</string>
     <string name="hello">Hi</string>
-    <string name="card_information">Card information:</string>
+    <string name="card_information">Card information</string>
     <string name="choose_language">Choose language:</string>
     <string name="settings">Settings</string>
 </resources>

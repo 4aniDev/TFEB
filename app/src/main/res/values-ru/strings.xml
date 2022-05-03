@@ -14,7 +14,7 @@
     <string name="error_input_card_person_surname">Неверная фамилия</string>
     <string name="your_balance_here">Ваш баланс:</string>
     <string name="hello">Привет</string>
-    <string name="card_information">Информация о карте:</string>
+    <string name="card_information">Информация о карте</string>
     <string name="choose_language">Выбрать язык:</string>
     <string name="settings">Настройки</string>
 </resources>
