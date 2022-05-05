@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ru.chani.tfeb.databinding.FragmentSettingsBinding
+import ru.chani.tfeb.domain.entity.Language
 
 class SettingsFragment : Fragment() {
 
@@ -53,14 +54,14 @@ class SettingsFragment : Fragment() {
         binding.cvLnEn.setOnClickListener {
             viewModel.setLocale(
                 requireActivity(),
-                SettingsViewModel.LANGUAGE_CODE_EN
+                Language.EN
             )
         }
 
         binding.cvLnRu.setOnClickListener {
             viewModel.setLocale(
                 requireActivity(),
-                SettingsViewModel.LANGUAGE_CODE_RU
+                Language.RU
             )
         }
     }

@@ -1,19 +1,28 @@
 package ru.chani.tfeb.presentation
 
 import android.app.Activity
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import ru.chani.tfeb.data.sharedPreferences.SharedPreferencesRepositoryImpl
+import ru.chani.tfeb.domain.entity.Language
+import ru.chani.tfeb.domain.usecases.PutRecordAboutChosenLanguageUseCase
 import java.util.*
 
-class SettingsViewModel: ViewModel() {
+class SettingsViewModel(application: Application): AndroidViewModel(application) {
+
+    private val repository = SharedPreferencesRepositoryImpl(application)
+
+    private val putRecordAboutChosenLanguageUseCase = PutRecordAboutChosenLanguageUseCase(repository)
 
     private var _shouldCloseScreen = MutableLiveData<Unit>()
     val shouldCloseScreen: LiveData<Unit>
         get() = _shouldCloseScreen
 
 
-    fun setLocale(activity: Activity, langCode: String) {
+    fun setLocale(activity: Activity, language: Language) {
+        val langCode = language.name
         val locale = Locale(langCode)
         Locale.setDefault(locale)
 
@@ -22,16 +31,14 @@ class SettingsViewModel: ViewModel() {
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
 
+        putRecordAboutChosenLanguageUseCase(
+            language
+        )
+
         finishWork()
     }
 
     private fun finishWork() {
         _shouldCloseScreen.value = Unit
-    }
-
-    companion object {
-        const val LANGUAGE_CODE_EN = "en"
-        const val LANGUAGE_CODE_RU = "ru"
-        const val LANGUAGE_CODE_TM = "tm"
     }
 }

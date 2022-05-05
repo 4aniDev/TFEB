@@ -24,6 +24,7 @@ class MainActivity :
 
         checkAllPermissions()
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        viewModel.setLanguage(this)
         setRightFragment()
     }
 
