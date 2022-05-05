@@ -66,7 +66,7 @@ class SharedPreferencesRepositoryImpl(context: Context) : SharedPreferencesRepos
         )
         return when (languageFromShPref) {
             Language.RU.name -> Language.RU
-            Language.TM.name -> Language.TM
+            Language.TK.name -> Language.TK
             else -> Language.EN
         }
     }

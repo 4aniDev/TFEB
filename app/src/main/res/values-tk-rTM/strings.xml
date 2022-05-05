@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TFEB</string>
+    <string name="person_first_name">Ady</string>
+    <string name="person_second_name">Familiýa</string>
+    <string name="balance">Balans</string>
+    <string name="check">Barlaň</string>
+    <string name="save">Saklaň</string>
+    <string name="card_number_hint">Kart nomeri</string>
+    <string name="card_person_name_hint">Ady</string>
+    <string name="card_person_surname_hint">Familiýa</string>
+    <string name="error_input_card_number">Nädogry kart belgisi</string>
+    <string name="error_input_card_person_name">Nädogry at</string>
+    <string name="error_input_card_person_surname">Nädogry familiýa</string>
+    <string name="your_balance_here">Balansyňyz:</string>
+    <string name="hello">Salam</string>
+    <string name="card_information">Karta maglumatlary</string>
+    <string name="choose_language">Dil saýlaň:</string>
+    <string name="settings">Sazlamalar</string>
+</resources>

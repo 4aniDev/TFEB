@@ -58,6 +58,13 @@ class SettingsFragment : Fragment() {
             )
         }
 
+        binding.cvLnTm.setOnClickListener {
+            viewModel.setLocale(
+                requireActivity(),
+                Language.TK
+            )
+        }
+
         binding.cvLnRu.setOnClickListener {
             viewModel.setLocale(
                 requireActivity(),

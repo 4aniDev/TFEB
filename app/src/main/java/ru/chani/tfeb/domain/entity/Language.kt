@@ -1,5 +1,5 @@
 package ru.chani.tfeb.domain.entity
 
 enum class Language {
-    EN, RU, TM
+    EN, RU, TK
 }
