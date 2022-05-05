@@ -12,6 +12,7 @@ import ru.chani.tfeb.R
 class MainActivity :
     AppCompatActivity(),
     CardItemFragment.OnEditingAndOnAddFinishedListener,
+    SettingsFragment.OnFirstChooseLanguageFinished,
     SettingsFragment.OnEditingFinishedListener {
 
 
@@ -29,20 +30,20 @@ class MainActivity :
     }
 
     private fun setRightFragment() {
-        if (viewModel.didTheAppLaunchEarlier()) {
-            secondAppLaunch()
+        val appLaunchedEarlier = viewModel.didTheAppLaunchEarlier()
+        if (appLaunchedEarlier) {
+            secondLaunchApp()
         } else {
-            firstAppLaunch()
+            firstLaunchApp()
         }
     }
 
-    private fun firstAppLaunch() {
-        viewModel.putRecordThatAppWasRun()
+    private fun firstLaunchApp() {
+        launchSettingsFragment()
         viewModel.generateDefaultCard()
-        launchFragmentNewCard()
     }
 
-    private fun secondAppLaunch() {
+    private fun secondLaunchApp() {
         if (viewModel.isDefaultCard()) {
             launchFragmentNewCard()
         } else {
@@ -56,6 +57,16 @@ class MainActivity :
             .replace(
                 R.id.main_container,
                 MainFragment.newInstanceMainFragment()
+            )
+            .commit()
+    }
+
+
+    fun launchSettingsFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.main_container,
+                SettingsFragment.newInstanceSettingsFragment()
             )
             .commit()
     }
@@ -75,6 +86,11 @@ class MainActivity :
 
     override fun onSettingsEditingFinished() {
         onBackPressed()
+    }
+
+    override fun onFirstChooseLanguageFinished() {
+        viewModel.putRecordThatAppWasRun()
+        launchFragmentNewCard()
     }
 
     override fun onAddFinished() {

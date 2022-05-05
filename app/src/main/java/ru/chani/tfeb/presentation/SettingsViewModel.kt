@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.chani.tfeb.data.sharedPreferences.SharedPreferencesRepositoryImpl
 import ru.chani.tfeb.domain.entity.Language
+import ru.chani.tfeb.domain.usecases.DidTheAppLaunchEarlierUseCase
 import ru.chani.tfeb.domain.usecases.PutRecordAboutChosenLanguageUseCase
 import java.util.*
 
@@ -14,6 +15,7 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
 
     private val repository = SharedPreferencesRepositoryImpl(application)
 
+    private val didTheAppLaunchEarlierUseCase = DidTheAppLaunchEarlierUseCase(repository)
     private val putRecordAboutChosenLanguageUseCase = PutRecordAboutChosenLanguageUseCase(repository)
 
     private var _shouldCloseScreen = MutableLiveData<Unit>()
@@ -31,12 +33,12 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
 
-        putRecordAboutChosenLanguageUseCase(
-            language
-        )
+        putRecordAboutChosenLanguageUseCase(language)
 
         finishWork()
     }
+
+    fun didTheAppLaunchEarlier() = didTheAppLaunchEarlierUseCase()
 
     private fun finishWork() {
         _shouldCloseScreen.value = Unit

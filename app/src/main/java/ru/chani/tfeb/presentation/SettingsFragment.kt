@@ -14,6 +14,7 @@ class SettingsFragment : Fragment() {
 
     private lateinit var viewModel: SettingsViewModel
 
+    private lateinit var onFirstChooseLanguageFinished: OnFirstChooseLanguageFinished
     private lateinit var onEditingFinishedListener: OnEditingFinishedListener
 
     private var _binding: FragmentSettingsBinding? = null
@@ -23,10 +24,16 @@ class SettingsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is SettingsFragment.OnEditingFinishedListener) {
+        if (context is OnEditingFinishedListener) {
             onEditingFinishedListener = context
         } else {
             RuntimeException("Activity must implement SettingsFragment.OnEditingFinishedListener")
+        }
+
+        if (context is OnFirstChooseLanguageFinished) {
+            onFirstChooseLanguageFinished = context
+        } else {
+            RuntimeException("Activity must implement SettingsFragment.OnFirstChooseLanguageFinished")
         }
     }
 
@@ -44,11 +51,13 @@ class SettingsFragment : Fragment() {
         viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
 
         viewModel.shouldCloseScreen.observe(viewLifecycleOwner) {
-            onEditingFinishedListener.onSettingsEditingFinished()
+            rightCloseScreen()
         }
 
         setOnClickListeners()
     }
+
+
 
     private fun setOnClickListeners() {
         binding.cvLnEn.setOnClickListener {
@@ -71,6 +80,19 @@ class SettingsFragment : Fragment() {
                 Language.RU
             )
         }
+    }
+
+    private fun rightCloseScreen() {
+        val appLaunchedEarlier = viewModel.didTheAppLaunchEarlier()
+        if (appLaunchedEarlier) {
+            onEditingFinishedListener.onSettingsEditingFinished()
+        } else {
+            onFirstChooseLanguageFinished.onFirstChooseLanguageFinished()
+        }
+    }
+
+    interface OnFirstChooseLanguageFinished {
+        fun onFirstChooseLanguageFinished()
     }
 
     interface OnEditingFinishedListener {
