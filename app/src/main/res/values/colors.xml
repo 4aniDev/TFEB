@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="settings_background">#2196F3</color>
+    <color name="settings_background">#FFAB00FF</color>
     <color name="field_background">#FFFFFF</color>
     <color name="text_your_balance_here">#C3FFFFFF</color>
     <color name="green">#6EFF00</color>
