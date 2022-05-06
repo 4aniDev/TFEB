@@ -10,7 +10,7 @@
     <string name="card_person_name_hint">Ady</string>
     <string name="card_person_surname_hint">Familiýa</string>
     <string name="error_input_card_number">Nädogry kart belgisi</string>
-    <string name="error_input_card_person_name">Nädogry at</string>
+    <string name="error_input_card_person_name">Nädogry ady</string>
     <string name="error_input_card_person_surname">Nädogry familiýa</string>
     <string name="your_balance_here">Balansyňyz:</string>
     <string name="hello">Salam</string>
