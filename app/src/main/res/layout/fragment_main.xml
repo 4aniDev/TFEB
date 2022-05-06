@@ -116,6 +116,13 @@
         </androidx.cardview.widget.CardView>
 
 
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator_layout_for_snack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cv_balance"
+            app:layout_constraintBottom_toTopOf="@id/button_check"/>
+
         <Button
             android:id="@+id/button_check"
             android:layout_width="0dp"

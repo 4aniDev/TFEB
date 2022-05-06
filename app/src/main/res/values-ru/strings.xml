@@ -5,7 +5,7 @@
     <string name="person_second_name">Фамилия</string>
     <string name="balance">БАЛАНС</string>
     <string name="check">Проверить</string>
-    <string name="save">сохранить</string>
+    <string name="sms_request_sent">СМС запрос отправлен</string>
     <string name="card_number_hint">Номер карты</string>
     <string name="card_person_name_hint">Имя</string>
     <string name="card_person_surname_hint">Фамилия</string>
@@ -17,4 +17,5 @@
     <string name="card_information">Информация о карте</string>
     <string name="choose_language">Выбрать язык:</string>
     <string name="settings">Настройки</string>
+    <string name="save">Сохранить</string>
 </resources>

@@ -5,7 +5,7 @@
     <string name="person_second_name">Familiýa</string>
     <string name="balance">Balans</string>
     <string name="check">Barlaň</string>
-    <string name="save">Saklaň</string>
+    <string name="sms_request_sent">SMS iberildi</string>
     <string name="card_number_hint">Kart nomeri</string>
     <string name="card_person_name_hint">Ady</string>
     <string name="card_person_surname_hint">Familiýa</string>
@@ -17,4 +17,5 @@
     <string name="card_information">Karta maglumatlary</string>
     <string name="choose_language">Dil saýlaň:</string>
     <string name="settings">Sazlamalar</string>
+    <string name="save">Saklamak</string>
 </resources>

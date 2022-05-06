@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import ru.chani.tfeb.R
 import ru.chani.tfeb.databinding.FragmentMainBinding
 import ru.chani.tfeb.domain.entity.CardEntity
@@ -56,6 +57,23 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
+    private fun showReportAboutSmsSentInSnackBar() {
+        val text = getStringValueForReportAboutSmsSent()
+        showTextInSnack(text)
+    }
+
+    private fun getStringValueForReportAboutSmsSent(): String {
+        return context?.getString(R.string.sms_request_sent) ?: "SMS request sent"
+    }
+
+    private fun showTextInSnack(text: String) {
+        Snackbar.make(
+            binding.coordinatorLayoutForSnack,
+            text,
+            Snackbar.LENGTH_SHORT
+        ).show()
+    }
+
     private fun goToCardItemFragment() {
         parentFragmentManager.beginTransaction()
             .addToBackStack(CardItemFragment.CARD_ITEM_FRAGMENT_NAME)
@@ -82,7 +100,10 @@ class MainFragment : Fragment() {
     private fun setOnClickListeners() {
         binding.fabSettings.setOnClickListener { goToSettingsFragment() }
         binding.cvBalance.setOnClickListener { goToCardItemFragment() }
-        binding.buttonCheck.setOnClickListener { viewModel.sendSms(requireActivity()) }
+        binding.buttonCheck.setOnClickListener {
+            viewModel.sendSms(requireActivity())
+            showReportAboutSmsSentInSnackBar()
+        }
     }
 
 
