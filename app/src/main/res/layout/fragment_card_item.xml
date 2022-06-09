@@ -130,7 +130,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <Button
             android:id="@+id/button_save"
             android:layout_width="match_parent"
