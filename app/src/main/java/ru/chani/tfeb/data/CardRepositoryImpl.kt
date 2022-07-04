@@ -1,18 +1,17 @@
 package ru.chani.tfeb.data
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import ru.chani.tfeb.data.database.AppDatabase
+import ru.chani.tfeb.data.database.CardDao
 import ru.chani.tfeb.data.database.CardMapper
 import ru.chani.tfeb.domain.entity.CardEntity
 import ru.chani.tfeb.domain.repositories.CardRepository
+import javax.inject.Inject
 
-class CardRepositoryImpl(application: Application) : CardRepository {
-
-    private val cardDao = AppDatabase.getInstance(application).cardDao()
-    private val mapper = CardMapper()
-
+class CardRepositoryImpl @Inject constructor(
+    private val mapper: CardMapper,
+    private val cardDao: CardDao
+) : CardRepository {
 
     override suspend fun addCard(cardEntity: CardEntity) {
         cardDao.addCard(mapper.mapCardEntityToCardDbModel(cardEntity))

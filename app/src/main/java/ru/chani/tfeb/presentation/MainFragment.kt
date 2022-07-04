@@ -1,6 +1,7 @@
 package ru.chani.tfeb.presentation
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import ru.chani.tfeb.R
+import ru.chani.tfeb.TfebApp
 import ru.chani.tfeb.databinding.FragmentMainBinding
 import ru.chani.tfeb.domain.entity.CardEntity
+import javax.inject.Inject
 
 
 class MainFragment : Fragment() {
@@ -22,7 +25,21 @@ class MainFragment : Fragment() {
     private val binding: FragmentMainBinding
         get() = _binding ?: throw RuntimeException("FragmentMainBinding == null")
 
+
     private lateinit var viewModel: MainFragmentViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val component by lazy {
+        (requireActivity().application as TfebApp).component
+    }
+
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +54,7 @@ class MainFragment : Fragment() {
 
         setOnClickListeners()
         checkAllPermission()
-        viewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainFragmentViewModel::class.java]
 
 
 

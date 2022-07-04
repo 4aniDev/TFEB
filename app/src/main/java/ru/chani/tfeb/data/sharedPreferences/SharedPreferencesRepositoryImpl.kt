@@ -1,18 +1,19 @@
 package ru.chani.tfeb.data.sharedPreferences
 
-import android.content.Context
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import ru.chani.tfeb.domain.entity.Language
 import ru.chani.tfeb.domain.repositories.SharedPreferencesRepository
+import javax.inject.Inject
 
-class SharedPreferencesRepositoryImpl(context: Context) : SharedPreferencesRepository {
+class SharedPreferencesRepositoryImpl @Inject constructor (application: Application) : SharedPreferencesRepository {
 
-    private val shpAppRunInfo = context.getSharedPreferences(
+    private val shpAppRunInfo = application.getSharedPreferences(
         SHARED_PREFERENCE_APP_RUN_INFORMATION,
         AppCompatActivity.MODE_PRIVATE
     )
 
-    private val shpLanguageSettings = context.getSharedPreferences(
+    private val shpLanguageSettings = application.getSharedPreferences(
         SHARED_PREFERENCE_APP_LANGUAGE_SETTINGS,
         AppCompatActivity.MODE_PRIVATE
     )

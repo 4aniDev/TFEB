@@ -1,28 +1,25 @@
 package ru.chani.tfeb.presentation
 
 import android.app.Activity
-import android.app.Application
 import android.content.Context
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.chani.tfeb.R
-import ru.chani.tfeb.data.CardRepositoryImpl
 import ru.chani.tfeb.data.sms.SmsReader
-import ru.chani.tfeb.data.sms.SmsRepositoryImpl
 import ru.chani.tfeb.domain.entity.CardEntity
 import ru.chani.tfeb.domain.usecases.GetCardUseCase
 import ru.chani.tfeb.domain.usecases.SendSmsUseCase
 import ru.chani.tfeb.domain.usecases.UpdateBalanceInTheCardUseCase
+import javax.inject.Inject
 
-class MainFragmentViewModel(application: Application) : AndroidViewModel(application) {
+class MainFragmentViewModel @Inject constructor(
+    private val updateBalanceInTheCardUseCase: UpdateBalanceInTheCardUseCase,
+    private val getCardUseCase: GetCardUseCase,
+    private val sendSmsUseCase: SendSmsUseCase
+) : ViewModel() {
 
-    private val cardRepository = CardRepositoryImpl(application)
-    private val smsRepository = SmsRepositoryImpl()
 
-    private val getCardUseCase = GetCardUseCase(cardRepository)
-    private val sendSmsUseCase = SendSmsUseCase(smsRepository)
-    private val updateBalanceInTheCardUseCase = UpdateBalanceInTheCardUseCase(cardRepository)
 
     var cardLd = getCardUseCase()
 

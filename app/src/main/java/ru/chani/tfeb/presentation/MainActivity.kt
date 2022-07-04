@@ -8,6 +8,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import ru.chani.tfeb.R
+import ru.chani.tfeb.TfebApp
+import javax.inject.Inject
 
 class MainActivity :
     AppCompatActivity(),
@@ -15,16 +17,23 @@ class MainActivity :
     SettingsFragment.OnFirstChooseLanguageFinished,
     SettingsFragment.OnEditingFinishedListener {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var viewModel: MainActivityViewModel
 
+    private val component by lazy {
+        (application as TfebApp).component
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        component.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         checkAllPermissions()
-        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainActivityViewModel::class.java]
         viewModel.setLanguage(this)
         setRightFragment()
     }
