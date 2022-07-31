@@ -1,22 +1,19 @@
 package ru.chani.tfeb.presentation
 
 import android.app.Activity
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ru.chani.tfeb.data.sharedPreferences.SharedPreferencesRepositoryImpl
+import androidx.lifecycle.ViewModel
 import ru.chani.tfeb.domain.entity.Language
 import ru.chani.tfeb.domain.usecases.DidTheAppLaunchEarlierUseCase
 import ru.chani.tfeb.domain.usecases.PutRecordAboutChosenLanguageUseCase
 import java.util.*
+import javax.inject.Inject
 
-class SettingsViewModel(application: Application): AndroidViewModel(application) {
-
-    private val repository = SharedPreferencesRepositoryImpl(application)
-
-    private val didTheAppLaunchEarlierUseCase = DidTheAppLaunchEarlierUseCase(repository)
-    private val putRecordAboutChosenLanguageUseCase = PutRecordAboutChosenLanguageUseCase(repository)
+class SettingsViewModel @Inject constructor(
+    private val didTheAppLaunchEarlierUseCase: DidTheAppLaunchEarlierUseCase,
+    private val putRecordAboutChosenLanguageUseCase: PutRecordAboutChosenLanguageUseCase,
+): ViewModel() {
 
     private var _shouldCloseScreen = MutableLiveData<Unit>()
     val shouldCloseScreen: LiveData<Unit>

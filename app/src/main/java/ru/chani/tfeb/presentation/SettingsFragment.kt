@@ -7,10 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import ru.chani.tfeb.TfebApp
 import ru.chani.tfeb.databinding.FragmentSettingsBinding
 import ru.chani.tfeb.domain.entity.Language
+import javax.inject.Inject
 
 class SettingsFragment : Fragment() {
+
+    private val component by lazy {
+        (requireActivity().application as TfebApp).component
+    }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var viewModel: SettingsViewModel
 
@@ -23,6 +32,8 @@ class SettingsFragment : Fragment() {
 
 
     override fun onAttach(context: Context) {
+        component.inject(this)
+
         super.onAttach(context)
         if (context is OnEditingFinishedListener) {
             onEditingFinishedListener = context
@@ -48,7 +59,7 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[SettingsViewModel::class.java]
 
         viewModel.shouldCloseScreen.observe(viewLifecycleOwner) {
             rightCloseScreen()

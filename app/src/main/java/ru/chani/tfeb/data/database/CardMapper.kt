@@ -1,8 +1,9 @@
 package ru.chani.tfeb.data.database
 
 import ru.chani.tfeb.domain.entity.CardEntity
+import javax.inject.Inject
 
-class CardMapper {
+class CardMapper @Inject constructor() {
     fun mapCardEntityToCardDbModel(cardEntity: CardEntity) = CardDbModel(
         id = cardEntity.id,
         numberOfCard = cardEntity.numberOfCard,

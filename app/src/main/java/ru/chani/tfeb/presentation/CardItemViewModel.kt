@@ -1,23 +1,19 @@
 package ru.chani.tfeb.presentation
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.chani.tfeb.data.CardRepositoryImpl
 import ru.chani.tfeb.domain.entity.CardEntity
 import ru.chani.tfeb.domain.usecases.EditCardUseCase
 import ru.chani.tfeb.domain.usecases.GetCardByCardNumberUseCase
+import javax.inject.Inject
 
-class CardItemViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository = CardRepositoryImpl(application)
-
-    private val getCardByCardNumberUseCase = GetCardByCardNumberUseCase(repository)
-    private val editCardUseCase = EditCardUseCase(repository)
-
+class CardItemViewModel @Inject constructor(
+    private val getCardByCardNumberUseCase: GetCardByCardNumberUseCase,
+    private val editCardUseCase: EditCardUseCase
+) : ViewModel() {
 
     private var _cardItem = MutableLiveData<CardEntity>()
     val cardItem: LiveData<CardEntity>

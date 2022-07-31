@@ -10,10 +10,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ru.chani.tfeb.R
+import ru.chani.tfeb.TfebApp
 import ru.chani.tfeb.databinding.FragmentCardItemBinding
 import ru.chani.tfeb.domain.entity.CardEntity.Companion.DEFAULT_CARD_NUMBER
+import javax.inject.Inject
 
 class CardItemFragment : Fragment() {
+
+    private val component by lazy {
+        (requireActivity().application as TfebApp).component
+    }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var viewModel: CardItemViewModel
 
@@ -27,6 +36,8 @@ class CardItemFragment : Fragment() {
     private lateinit var cardNumber: String
 
     override fun onAttach(context: Context) {
+        component.inject(this)
+
         super.onAttach(context)
         if (context is OnEditingAndOnAddFinishedListener) {
             onEditingAndOnAddFinishedListener = context
@@ -51,7 +62,7 @@ class CardItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[CardItemViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[CardItemViewModel::class.java]
         launchRightMode()
         addChangeListeners()
     }
