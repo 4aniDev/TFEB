@@ -27,8 +27,6 @@ class SmsReader {
             TFEB_SMS_NUMBER_FOR_CHECK_BALANCE
         )
 
-        cursor
-
         return if (isCursorContainsTfebNumber) {
             val smsContainsBalanceInfo = findSmsContainsBalanceInfo(cursor, textColIdx)
             if (smsContainsBalanceInfo != SMS_HAS_NOT_INFO_ABOUT_BALANCE) {
