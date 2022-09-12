@@ -4,11 +4,7 @@
 
 ## Screenshots
 
-![Main Screen](https://raw.githubusercontent.com/4aniDev/TFEB/master/screenshots/s1.png "Main Screen")
-
-![Settings Screen](https://raw.githubusercontent.com/4aniDev/TFEB/master/screenshots/s2.png "Settings Screen")
-
-
+<img src="https://raw.githubusercontent.com/4aniDev/TFEB/master/screenshots/s_01.png" width="200"> | <img src="https://raw.githubusercontent.com/4aniDev/TFEB/master/screenshots/s_02.png" width="200"> | <img src="https://raw.githubusercontent.com/4aniDev/TFEB/master/screenshots/s_03.png" width="200"> 
 
 ## How it works
 
