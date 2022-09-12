@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_settings_24"
                 android:layout_margin="5dp"
+                android:contentDescription="@string/settings"
                 app:backgroundTint="@color/settings_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +63,7 @@
                 android:id="@+id/iv_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/balance"
                 android:scaleType="fitXY"
                 android:src="@drawable/balance_background" />
 
